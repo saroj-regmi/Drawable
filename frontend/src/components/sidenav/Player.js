@@ -1,23 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
+import styles from "../../styles/sidenav/player.module.css";
 
-function Player({details}) {
-  console.log(details);
-  const currentUser = {
-    id: "#123324",
-    name: "saroj regmi",
-    logo: "../../imgs/TestImg.jpg",
-  };
+import image from "../../imgs/1.jpg";
+import { contextProvider } from "../../Context";
+
+function Player({ details }) {
+  const {
+    users: {
+      loggedIn: [currentUser, setCurrentUser],
+    },
+  } = useContext(contextProvider);
+
   return (
     <>
-      <div className="container">
-        <div className="logo">
-          <img src="1.jpg" alt="Player logo" />
+      <div
+        className={
+          details.id === currentUser.id
+            ? styles.mineContainer
+            : styles.container
+        }
+      >
+        <div className={styles.logo}>
+          {/* this src should be changed to data.logo once the login with google is done */}
+          <img src={image} alt="Player logo" className={styles.logoImg} />
         </div>
-        <div className="usernameId">
-          <div className="username">{details.name}</div>
-          <div className="id">{details.id}</div>
+        <div className={styles.usernameId}>
+          <div className={styles.username}>{details.name}</div>
+          <div className={styles.id}>Player {details.id}</div>
         </div>
-        <div className="gearIcon">
+        <div className={styles.gearIcon}>
           {details.id === currentUser.id ? (
             <svg
               width="20"

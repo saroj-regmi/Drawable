@@ -1,0 +1,13 @@
+.sideNav {
+  width: var(--side-nav-width);
+  background-color: var(--primary-black);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 50px;
+  box-shadow: var(--default-shadow);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
