@@ -40,3 +40,13 @@
   font-weight: 400;
   font-size: 20px;
 }
+
+.clearAll {
+  cursor: pointer;
+}
+.backward {
+  cursor: pointer;
+}
+.forward {
+  cursor: pointer;
+}

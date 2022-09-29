@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { contextProvider } from "../../Context";
 import styles from "../../styles/editor/bottomController.module.css";
 
 function BottomController() {
   const drawingTitle = "Draw a Beautiful dog.";
+  const {
+    canvasContext: {
+      clearCanvas,
+      undoDrawing,
+      redoDrawing,
+      
+    },
+  } = useContext(contextProvider);
+
   return (
     <div className={styles.container}>
       <div className={styles.contents}>
         <div className={styles.drawingTitle}>{drawingTitle}</div>
         <div className={styles.controls}>
-          <div className={styles.clearAll}>
+          <div className={styles.clearAll} onClick={clearCanvas}>
             <svg
               width="39"
               height="31"
@@ -40,7 +50,7 @@ function BottomController() {
               </defs>
             </svg>
           </div>
-          <div className={styles.backward}>
+          <div className={styles.backward} onClick={undoDrawing}>
             <svg
               width="57"
               height="53"
@@ -51,13 +61,13 @@ function BottomController() {
               <g clip-path="url(#clip0_14_138)">
                 <path
                   d="M8.50198 15.9145L20.1548 24.9491C20.2956 25.0583 20.4023 25.2054 20.4625 25.3731C20.5227 25.5407 20.5339 25.7221 20.4947 25.8958C20.4556 26.0696 20.3677 26.2287 20.2415 26.3543C20.1152 26.48 19.9558 26.5671 19.7818 26.6054L8.5327 29.0821C8.39852 29.1116 8.2595 29.1112 8.12548 29.081C7.99146 29.0508 7.86572 28.9915 7.75715 28.9074C7.64858 28.8232 7.55984 28.7162 7.4972 28.5939C7.43456 28.4716 7.39956 28.3371 7.39468 28.1998L6.9909 16.6884C6.98467 16.5103 7.02928 16.3342 7.11953 16.1806C7.20977 16.027 7.34191 15.9023 7.50046 15.8211C7.65902 15.7399 7.83742 15.7056 8.01479 15.7221C8.19216 15.7386 8.36116 15.8054 8.50198 15.9145Z"
-                  fill="#969696"
+                  fill="#2C2C2C"
                 />
                 <path
                   fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M16.1066 21.8104C18.7921 19.5052 22.0751 18.0068 25.5762 17.4884C29.0773 16.9699 32.6536 17.4526 35.892 18.8806C39.1304 20.3086 41.8987 22.6236 43.8772 25.5583C45.8556 28.493 46.9633 31.9275 47.0725 35.4651C47.0719 35.7165 47.1218 35.9654 47.2194 36.1971C47.3169 36.4288 47.46 36.6385 47.6402 36.8137C47.8204 36.989 48.034 37.1262 48.2683 37.2173C48.5026 37.3083 48.7529 37.3513 49.0041 37.3437C49.2554 37.3361 49.5026 37.2781 49.7309 37.173C49.9593 37.068 50.1642 36.9181 50.3335 36.7323C50.5028 36.5465 50.633 36.3285 50.7164 36.0913C50.7997 35.8542 50.8345 35.6027 50.8188 35.3518C50.6857 31.0423 49.3177 26.8617 46.8773 23.3072C44.437 19.7527 41.0271 16.9739 37.0531 15.3013C33.0792 13.6288 28.7084 13.1328 24.4608 13.8725C20.2131 14.6121 16.2673 16.5563 13.0926 19.4736L16.1066 21.8104Z"
-                  fill="#969696"
+                  fill="#2C2C2C"
                 />
               </g>
               <defs>
@@ -72,7 +82,7 @@ function BottomController() {
               </defs>
             </svg>
           </div>
-          <div className={styles.forward}>
+          <div className={styles.forward} onClick={redoDrawing}>
             <svg
               width="57"
               height="52"
